@@ -7,12 +7,23 @@
 <body>
     <div id="header"></div>
     <div id="app"></div>
+    <h3>Обновление элемента</h3>
+    <div id="container"></div>
 
     <script crossorigin src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
     <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
     <script type="text/babel">
+        function tick() {
+            ReactDOM.render(
+                <div>
+                    <h2>Текущее время {new Date().toLocaleTimeString()}.</h2>
+                </div>,
+                document.getElementById("container")
+            );
+        }
+        setInterval(tick, 1000);
         ReactDOM.render(
             <h1>Hello React!</h1>,
             document.getElementById("header")
