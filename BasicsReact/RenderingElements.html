@@ -5,6 +5,7 @@
     <title>Рендеринг элементов</title>
 </head>
 <body>
+    <div id="header"></div>
     <div id="app"></div>
 
     <script crossorigin src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
@@ -12,6 +13,10 @@
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
     <script type="text/babel">
+        ReactDOM.render(
+            <h1>Hello React!</h1>,
+            document.getElementById("header")
+        );
         ReactDOM.render(
             <div id="items">
                 <h2> Список телефонов</h2>
