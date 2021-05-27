@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Компоненты</title>
+</head>
+<body>
+    <div id="appFunction"></div>
+    <div id="appClass"></div>
+    <div id="appArrow"></div>
+
+    <script crossorigin src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <script type="text/babel">
+        function Component1() {
+            return <h2>Функциональый способ создания компонента</h2>;
+        }
+
+        class Component2 extends React.Component {
+            render() {
+                return <h2>Второй способ определения компонентов предполагает использование классов ES6</h2>;
+            }
+        }
+
+        var Component3 =() => {
+            return (<h2>Определение компонента с помощью стрелочной функции (arrow functions)</h2>);
+        }
+
+        ReactDOM.render(
+            <Component1 />,
+            document.getElementById("appFunction")
+        )
+        ReactDOM.render(
+                <Component2 />,
+            document.getElementById("appClass")
+        )
+        ReactDOM.render(
+                <Component3 />,
+            document.getElementById("appArrow")
+        )
+    </script>
+</body>
+</html>
