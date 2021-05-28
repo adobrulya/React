@@ -8,6 +8,7 @@
     <div id="appFunction"></div>
     <div id="appClass"></div>
     <div id="appArrow"></div>
+    <div id="hello"></div>
 
     <script crossorigin src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
     <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
@@ -41,6 +42,16 @@
             }
         }
 
+        class Hello extends React.Component {
+            render() {
+                return <div>
+                    <p>Имя: {this.props.name4}</p>
+                    <p>Возраст: {this.props.age4}</p>
+                </div>;
+            }
+        }
+        Hello.defaultProps = {name4: "Lorenco", age4: 55};
+
         ReactDOM.render(
             <Component1 name="Tom" age="33" />,
             document.getElementById("appFunction")
@@ -54,6 +65,11 @@
         ReactDOM.render(
                 <Component2 name2="Jeck" age2="17" />,
             document.getElementById("appArrow")
+        )
+
+        ReactDOM.render(
+            <Hello name4="Styven" />, // <Hello />
+            document.getElementById("hello")
         )
     </script>
 
