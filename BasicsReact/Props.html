@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Props</title>
+</head>
+<body>
+    <div id="appFunction"></div>
+    <div id="appClass"></div>
+    <div id="appArrow"></div>
+
+    <script crossorigin src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <script type="text/babel">
+        //Функциональный подход:
+        function Component1(props) {
+            return <div>
+                    <p>Имя: {props.name}</p>
+                    <p>Возраст: {props.age}</p>
+            </div>;
+        }
+
+        //Использование стрелочных функций (arrow functions):
+        const Component2 = (props) => {
+            const {name2, age2} = props;
+            return(<div>
+                    <p>Имя: {name2}</p>
+                    <p>Возраст: {age2}</p>
+            </div>);
+        }
+
+        class Component3 extends React.Component {
+            render() {
+                return <div>
+                            <p>Имя: {this.props.name3}</p>
+                            <p>Возраст: {this.props.age3}</p>
+                </div>;
+            }
+        }
+
+        ReactDOM.render(
+            <Component1 name="Tom" age="33" />,
+            document.getElementById("appFunction")
+        )
+
+        ReactDOM.render(
+                <Component3 name3="Bill" age3="26" />,
+            document.getElementById("appClass")
+        )
+
+        ReactDOM.render(
+                <Component2 name2="Jeck" age2="17" />,
+            document.getElementById("appArrow")
+        )
+    </script>
+
+</body>
+</html>
