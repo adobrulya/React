@@ -7,6 +7,7 @@
 <body>
     <div id="app"></div>
     <div id="app2"></div>
+    <div id="app3"></div>
 
     <script crossorigin src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
     <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
@@ -37,6 +38,22 @@
             }
         }
 
+        //Получение информации о событии
+        class ClickButton3 extends React.Component {
+            constructor(props) {
+                super(props);
+                this.press = this.press.bind(this);
+            }
+            press(e){
+                console.log(e); // выводим информацию о событии
+                alert("Hello React 3!!!")
+            }
+            render() {
+                return <button onClick = {this.press}>Click me 3!!!</button>;
+            }
+
+        }
+
 
         ReactDOM.render(
             <ClickButton/>,
@@ -46,6 +63,11 @@
         ReactDOM.render(
                 <ClickButton2/>,
             document.getElementById("app2")
+        )
+
+        ReactDOM.render(
+            <ClickButton3/>,
+            document.getElementById("app3")
         )
 
     </script>
