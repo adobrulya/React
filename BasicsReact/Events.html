@@ -6,7 +6,7 @@
 </head>
 <body>
     <div id="app"></div>
-
+    <div id="app2"></div>
 
     <script crossorigin src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
     <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
@@ -26,6 +26,16 @@
             }
         }
 
+        // определение обработчика в виде публичного поля, которое указывает на стрелочную функцию
+        class ClickButton2 extends React.Component {
+            press = () => {
+                console.log(this);
+                alert("Hello React 2!");
+            }
+            render() {
+                return <button onClick={() => this.press()}>Click me 2</button>;
+            }
+        }
 
 
         ReactDOM.render(
@@ -33,7 +43,11 @@
             document.getElementById("app")
         )
 
-        
+        ReactDOM.render(
+                <ClickButton2/>,
+            document.getElementById("app2")
+        )
+
     </script>
 </body>
 </html>
