@@ -28,6 +28,7 @@
 
     <div id="app"></div>
     <div id="btn"></div>
+    <div id="btnAsync"></div>
 
     <script crossorigin src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
     <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
@@ -67,6 +68,30 @@
         ReactDOM.render(
             <ClickButton/>,
             document.getElementById("btn")
+        )
+
+        //Асинхронное обновление
+        class ClickButtonAsync extends React.Component {
+            constructor(props) {
+                super(props);
+                this.state = {counter: 0};
+                this.press = this.press.bind(this);
+            }
+            press(){
+                this.setState({counter: this.state.counter + parseInt(this.props.increment)});
+                this.setState({counter: this.state.counter + parseInt(this.props.increment)});
+            }
+            render() {
+                return <div>
+                            <button onClick={this.press}>Count</button>
+                            <div>Counter: {this.state.counter} <br/> Increment: {this.props.increment}</div>
+                    </div>
+            }
+        }
+
+        ReactDOM.render(
+            <ClickButtonAsync increment="1"/>,
+            document.getElementById("btnAsync")
         )
     </script>
 
