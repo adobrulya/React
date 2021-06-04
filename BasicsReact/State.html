@@ -77,9 +77,14 @@
                 this.state = {counter: 0};
                 this.press = this.press.bind(this);
             }
+            incrementCounter(prevState, props) {
+                return {
+                    counter: prevState.counter + parseInt(props.increment)
+                };
+            }
             press(){
-                this.setState({counter: this.state.counter + parseInt(this.props.increment)});
-                this.setState({counter: this.state.counter + parseInt(this.props.increment)});
+                this.setState(this.incrementCounter);
+                this.setState(this.incrementCounter);
             }
             render() {
                 return <div>
