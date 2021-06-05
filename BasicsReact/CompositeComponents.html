@@ -11,6 +11,17 @@
     <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <script type="text/babel">
+        const propsValues = {
+            title: "Список телефонов",
+            items: [
+                "Samsung Galaxy Note20",
+                "Apple iPhone 12 Pro",
+                "Google Pixel 5",
+                "Huawei P40 Pro",
+                "OnePlus 8 Pro",
+                "Asus Zenfone 7 Pro"
+            ]
+        };
         class Item extends React.Component {
             render() {
                 return <li>{this.props.name}</li>;
@@ -21,11 +32,13 @@
             render() {
                 return (
                     <div>
-                        <h2>{this.props.title}</h2>
+                        <h2>{this.props.data.title}</h2>
                         <ul>
-                            <Item name="Apple iPhone 12 Pro"/>
-                            <Item name="Samsung Galaxy Note20"/>
-                            <Item name="Google Pixel 5"/>
+                            {
+                                this.props.data.items.map(function (item) {
+                                    return <Item key={item} name={item}/>
+                                })
+                            }
                         </ul>
                     </div>
                 );
@@ -33,7 +46,7 @@
         }
 
         ReactDOM.render(
-            <ItemsList title="Список смартфонов"/>,
+            <ItemsList data={propsValues}/>,
             document.getElementById("app")
         )
     </script>
