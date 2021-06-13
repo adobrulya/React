@@ -18,7 +18,7 @@
                 var nameIsValid = this.validateName(name);
                 var age = props.age;
                 var ageIsValid = this.validateAge(age);
-                this.state = {name: name, age: age, nameValid: nameValid, ageValid: ageValid};
+                this.state = {name: name, age: age, nameValid: nameIsValid, ageValid: ageIsValid};
 
                 this.onNameChange = this.onNameChange.bind(this);
                 this.onAgeChange = this.onAgeChange.bind(this);
@@ -27,12 +27,12 @@
             validateAge(age){
                 return age>=0;
             }
-            valideteName(name){
+            validateName(name){
                 return name.length>2;
             }
             onAgeChange(e) {
                 var val = e.target.value;
-                var valid = this.validate.Age(val);
+                var valid = this.validateAge(val);
                 this.setState({age: val, ageValid: valid});
             }
             onNameChange(e) {
@@ -44,8 +44,8 @@
 
             handleSubmit(e) {
                 e.preventDefault();
-                if(this.state.nameValid === true && this.state.ageValid === true){
-                    alert("Имя: " + this.state.name + "Возраст: " + this.state.age);
+                if(this.state.nameValid ===true && this.state.ageValid===true){
+                    alert("Имя: " + this.state.name + " Возраст: " + this.state.age);
                 }
             }
 
@@ -57,11 +57,16 @@
                 return (
                         <form onSubmit={this.handleSubmit}>
                             <p>
-                                <label>Имя:</label><br/>
+                                <label>Имя:</label><br />
                                 <input type="text" value={this.state.name}
-                                    onChange={this.onNameChange} style={{borderColor:ageColor}}/>
+                                       onChange={this.onNameChange} style={{borderColor:nameColor}} />
                             </p>
-                            <input type="submit" value="Отправить"/>
+                            <p>
+                                <label>Возраст:</label><br />
+                                <input type="number" value={this.state.age}
+                                       onChange={this.onAgeChange}  style={{borderColor:ageColor}} />
+                            </p>
+                            <input type="submit" value="Отправить" />
                         </form>
                 );
             }
